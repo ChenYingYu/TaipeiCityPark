@@ -9,10 +9,12 @@
 import UIKit
 
 class TCPViewController: UIViewController {
+    var spots = [Spot]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        TCPClient().taskForGETSpot()
     }
 
     override func didReceiveMemoryWarning() {
