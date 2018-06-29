@@ -27,7 +27,9 @@ class TCPViewController: UIViewController {
 
             if let mySpots = spots {
                 self.spots = mySpots
-                print(self.spots)
+                DispatchQueue.main.async {
+                    self.spotTableView.reloadData()
+                }
             }
         }
     }
@@ -45,9 +47,14 @@ extension TCPViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? SpotTableViewCell else {
             return UITableViewCell()
         }
+
+        cell.spotNameLabel.text = spots[indexPath.row].spotName
+        cell.spotIntroductionLabel.text = spots[indexPath.row].introduction
+
         return cell
     }
 }
