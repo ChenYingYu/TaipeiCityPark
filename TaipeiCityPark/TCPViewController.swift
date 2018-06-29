@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TCPViewController.swift
 //  TaipeiCityPark
 //
 //  Created by ChenAlan on 2018/6/29.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TCPViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
