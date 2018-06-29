@@ -14,6 +14,8 @@
 		0A56779120E5D1D800214832 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A56778F20E5D1D800214832 /* LaunchScreen.storyboard */; };
 		0A56779D20E5D9DD00214832 /* TCPSpots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56779C20E5D9DD00214832 /* TCPSpots.swift */; };
 		0A56779F20E5E10F00214832 /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56779E20E5E10F00214832 /* TCPClient.swift */; };
+		0A5677A220E5EF5400214832 /* SpotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5677A020E5EF5400214832 /* SpotTableViewCell.swift */; };
+		0A5677A320E5EF5400214832 /* SpotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5677A120E5EF5400214832 /* SpotTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		0A56779220E5D1D800214832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A56779C20E5D9DD00214832 /* TCPSpots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPSpots.swift; sourceTree = "<group>"; };
 		0A56779E20E5E10F00214832 /* TCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
+		0A5677A020E5EF5400214832 /* SpotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotTableViewCell.swift; sourceTree = "<group>"; };
+		0A5677A120E5EF5400214832 /* SpotTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 		0A56779B20E5D7AD00214832 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0A5677A020E5EF5400214832 /* SpotTableViewCell.swift */,
+				0A5677A120E5EF5400214832 /* SpotTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +161,7 @@
 				0A56779120E5D1D800214832 /* LaunchScreen.storyboard in Resources */,
 				0A56778E20E5D1D800214832 /* Assets.xcassets in Resources */,
 				0A56778C20E5D1D000214832 /* Main.storyboard in Resources */,
+				0A5677A320E5EF5400214832 /* SpotTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +175,7 @@
 				0A56779F20E5E10F00214832 /* TCPClient.swift in Sources */,
 				0A56778920E5D1D000214832 /* TCPViewController.swift in Sources */,
 				0A56779D20E5D9DD00214832 /* TCPSpots.swift in Sources */,
+				0A5677A220E5EF5400214832 /* SpotTableViewCell.swift in Sources */,
 				0A56778720E5D1D000214832 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
