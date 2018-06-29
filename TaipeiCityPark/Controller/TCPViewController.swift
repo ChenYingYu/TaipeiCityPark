@@ -9,7 +9,9 @@
 import UIKit
 
 class TCPViewController: UIViewController {
+
     var spots = [Spot]()
+    var imageCache = [String: UIImage?]()
     @IBOutlet weak var spotTableView: UITableView!
 
     override func viewDidLoad() {
@@ -48,19 +50,25 @@ extension TCPViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? SpotTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? SpotTableViewCell, spots.count > indexPath.row else {
             return UITableViewCell()
         }
 
         cell.spotNameLabel.text = spots[indexPath.row].spotName
         cell.spotIntroductionLabel.text = spots[indexPath.row].introduction
-        if let imageURL = URL(string: spots[indexPath.row].imageURL) {
-            do {
-                let imageData = try Data(contentsOf: imageURL)
-                let image = UIImage(data: imageData)
-                cell.spotImageView.image = image
-            } catch let error {
-                print("Image parse failed. Error: \(error)")
+
+        if let image = imageCache[spots[indexPath.row].spotName] {
+            cell.spotImageView.image = image
+        } else {
+            if let imageURL = URL(string: spots[indexPath.row].imageURL) {
+                do {
+                    let imageData = try Data(contentsOf: imageURL)
+                    let image = UIImage(data: imageData)
+                    cell.spotImageView.image = image
+                    imageCache.updateValue(image, forKey: spots[indexPath.row].spotName)
+                } catch let error {
+                    print("Image parse failed. Error: \(error)")
+                }
             }
         }
         return cell
