@@ -54,7 +54,15 @@ extension TCPViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.spotNameLabel.text = spots[indexPath.row].spotName
         cell.spotIntroductionLabel.text = spots[indexPath.row].introduction
-
+        if let imageURL = URL(string: spots[indexPath.row].imageURL) {
+            do {
+                let imageData = try Data(contentsOf: imageURL)
+                let image = UIImage(data: imageData)
+                cell.spotImageView.image = image
+            } catch let error {
+                print("Image parse failed. Error: \(error)")
+            }
+        }
         return cell
     }
 }

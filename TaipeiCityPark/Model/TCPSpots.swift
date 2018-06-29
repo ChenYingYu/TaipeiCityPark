@@ -30,7 +30,7 @@ struct Spot: Codable {
     let spotName: String
     let yearBuilt: String
     let openTime: String
-    let image: String
+    let imageURL: String
     let introduction: String
     enum CodingKeys: String, CodingKey {
         case parkId = "_id"
@@ -38,7 +38,7 @@ struct Spot: Codable {
         case spotName = "Name"
         case yearBuilt = "YearBuilt"
         case openTime = "OpenTime"
-        case image = "Image"
+        case imageURL = "Image"
         case introduction = "Introduction"
     }
 }
