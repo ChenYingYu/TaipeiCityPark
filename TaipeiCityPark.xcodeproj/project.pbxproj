@@ -55,13 +55,37 @@
 			isa = PBXGroup;
 			children = (
 				0A56778620E5D1D000214832 /* AppDelegate.swift */,
-				0A56778820E5D1D000214832 /* TCPViewController.swift */,
+				0A56779A20E5D7A700214832 /* Model */,
+				0A56779B20E5D7AD00214832 /* View */,
+				0A56779820E5D78B00214832 /* Controller */,
 				0A56778A20E5D1D000214832 /* Main.storyboard */,
 				0A56778D20E5D1D800214832 /* Assets.xcassets */,
 				0A56778F20E5D1D800214832 /* LaunchScreen.storyboard */,
 				0A56779220E5D1D800214832 /* Info.plist */,
 			);
 			path = TaipeiCityPark;
+			sourceTree = "<group>";
+		};
+		0A56779820E5D78B00214832 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A56778820E5D1D000214832 /* TCPViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0A56779A20E5D7A700214832 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A56779B20E5D7AD00214832 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
