@@ -8,6 +8,13 @@
 
 import Foundation
 
+struct Root: Codable {
+    let result: Result
+    enum CodingKeys: String, CodingKey {
+        case result
+    }
+}
+
 struct Result: Codable {
     let spots: [Spot]
     let count: Int

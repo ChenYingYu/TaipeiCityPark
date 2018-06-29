@@ -35,7 +35,8 @@ class TCPClient {
             }
 
             do {
-                let result = try JSONDecoder().decode(Result.self, from: data)
+                let root = try JSONDecoder().decode(Root.self, from: data)
+                let result = root.result
                 let spots = result.spots
                 completionHandlerForSpot(spots, nil)
             } catch let error {
