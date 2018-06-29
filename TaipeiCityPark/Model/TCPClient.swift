@@ -10,7 +10,7 @@ import Foundation
 
 class TCPClient {
 
-    func taskForGETSpot() {
+    func taskForGETSpot(completionHandlerForSpot: @escaping (_ spots: [Spot]?, _ error: Error?) -> Void) {
         guard let url = URL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=bf073841-c734-49bf-a97f-3757a6013812") else {
             print("Cannot make URL by given string.")
             return
@@ -37,8 +37,9 @@ class TCPClient {
             do {
                 let result = try JSONDecoder().decode(Result.self, from: data)
                 let spots = result.spots
+                completionHandlerForSpot(spots, nil)
             } catch let error {
-                
+                completionHandlerForSpot(nil, error)
             }
         }
 
