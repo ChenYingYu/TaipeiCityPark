@@ -21,24 +21,23 @@ class TCPViewController: UIViewController {
         spotTableView.dataSource = self
         let nib = UINib(nibName: "SpotTableViewCell", bundle: nil)
             spotTableView.register(nib, forCellReuseIdentifier: "Cell")
-        TCPClient().taskForGETSpot() { (spots, error) in
+        requestSpot()
+    }
+
+    func requestSpot() {
+        TCPClient().taskForGETSpot(offset: spots.count) { (spots, error) in
             guard error == nil else {
                 print(error ?? "Found Error")
                 return
             }
-
+            
             if let mySpots = spots {
-                self.spots = mySpots
+                self.spots += mySpots
                 DispatchQueue.main.async {
                     self.spotTableView.reloadData()
                 }
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
@@ -73,5 +72,11 @@ extension TCPViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-}
 
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastItem = spots.count - 1
+        if indexPath.row == lastItem {
+            requestSpot()
+        }
+    }
+}

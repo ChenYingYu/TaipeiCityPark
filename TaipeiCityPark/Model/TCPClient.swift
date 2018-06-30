@@ -10,8 +10,8 @@ import Foundation
 
 class TCPClient {
 
-    func taskForGETSpot(completionHandlerForSpot: @escaping (_ spots: [Spot]?, _ error: Error?) -> Void) {
-        guard let url = URL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=bf073841-c734-49bf-a97f-3757a6013812") else {
+    func taskForGETSpot(offset: Int, completionHandlerForSpot: @escaping (_ spots: [Spot]?, _ error: Error?) -> Void) {
+        guard let url = URL(string: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=bf073841-c734-49bf-a97f-3757a6013812&limit=30&offset=\(offset)") else {
             print("Cannot make URL by given string.")
             return
         }
