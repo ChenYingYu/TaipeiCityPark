@@ -12,6 +12,7 @@ class TCPViewController: UIViewController {
 
     var spots = [Spot]()
     var imageCache = [String: UIImage?]()
+    let spinner = UIActivityIndicatorView()
     @IBOutlet weak var spotTableView: UITableView!
 
     override func viewDidLoad() {
@@ -25,17 +26,24 @@ class TCPViewController: UIViewController {
     }
 
     func requestSpot() {
-        TCPClient().taskForGETSpot(offset: spots.count) { (spots, error) in
+        self.runSpinner(spinner, in: self.view)
+        TCPClient().taskForGETSpot(offset: spots.count) { [weak self] (spots, error) in
             guard error == nil else {
                 print(error ?? "Found Error")
+                DispatchQueue.main.async {
+                    self?.spinner.stopAnimating()
+                }
                 return
             }
             
             if let mySpots = spots {
-                self.spots += mySpots
+                self?.spots += mySpots
                 DispatchQueue.main.async {
-                    self.spotTableView.reloadData()
+                    self?.spotTableView.reloadData()
                 }
+            }
+            DispatchQueue.main.async {
+                self?.spinner.stopAnimating()
             }
         }
     }
@@ -78,5 +86,14 @@ extension TCPViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == lastItem {
             requestSpot()
         }
+    }
+}
+
+extension UIViewController {
+    func runSpinner(_ spinner: UIActivityIndicatorView, in view: UIView) {
+        spinner.color = UIColor.gray
+        spinner.center = view.center
+        view.addSubview(spinner)
+        spinner.startAnimating()
     }
 }
